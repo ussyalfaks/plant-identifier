@@ -57,19 +57,20 @@ export default function Home() {
           </div>
           {preview && (
             <div className="mb-4">
-<Image 
-  src={preview} 
-  alt="Preview" 
-  width={200} 
-  height={150} 
-  layout="responsive"
-  className="rounded-lg" 
-/>            </div>
+                <Image 
+                  src={preview} 
+                  alt="Preview" 
+                  width={50} 
+                  height={50} 
+                  layout="responsive"
+                  className="rounded-lg" 
+                />         
+            </div>
           )}
           <button
             onClick={handleSubmit}
             disabled={!image || loading}
-            className="w-full bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition duration-300 disabled:opacity-50"
+            className="w-60 bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition duration-300 disabled:opacity-50"
           >
             {loading ? 'Identifying...' : 'Identify Plant'}
           </button>
