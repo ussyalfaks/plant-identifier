@@ -56,16 +56,17 @@ export default function Home() {
             />
           </div>
           {preview && (
-            <div className="mb-4">
-                <Image 
-                  src={preview} 
-                  alt="Preview" 
-                  width={50} 
-                  height={50} 
-                  layout="responsive"
-                  className="rounded-lg" 
-                />         
+            <div className="mb-4 flex justify-center">
+            <div className="w-80 h-80 relative">
+              <Image 
+                src={preview} 
+                alt="Preview" 
+                layout="fill"
+                objectFit="cover"
+                className="rounded-lg" 
+              />         
             </div>
+          </div>
           )}
           <button
             onClick={handleSubmit}
