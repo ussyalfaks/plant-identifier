@@ -1,7 +1,7 @@
 import Layout from './layout';
 import { useState } from 'react';
 
-export default function Contact() {
+ function Contact() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -88,3 +88,5 @@ export default function Contact() {
     </Layout>
   );
 }
+
+export default Contact

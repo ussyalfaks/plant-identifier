@@ -1,7 +1,7 @@
 import Layout from './layout';
 import Image from 'next/image';
 
-export default function About() {
+ function About() {
   return (
     <Layout>
       <div className="max-w-4xl mx-auto">
@@ -39,3 +39,5 @@ export default function About() {
     </Layout>
   );
 }
+
+export default About

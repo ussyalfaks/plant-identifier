@@ -24,7 +24,7 @@ const faqs = [
   }
 ];
 
-export default function FAQ() {
+ function FAQ() {
   const [openIndex, setOpenIndex] = useState(null);
 
   const toggleAnswer = (index) => {
@@ -71,3 +71,5 @@ export default function FAQ() {
     </Layout>
   );
 }
+
+export default FAQ

@@ -2,9 +2,11 @@
 
 import { useState, useRef } from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
+// import Link from 'next/link'
 import { identifyPlant } from '../utils/plantIdentifier'
-import { FaLeaf, FaCamera, FaUpload, FaInfoCircle } from 'react-icons/fa'
+import Sidebar from "./components/sidebar"
+import Footer from './components/footer'
+import Card from './components/card'
 
 export default function Home() {
   const [image, setImage] = useState<File | null>(null)
@@ -15,7 +17,7 @@ export default function Home() {
   const videoRef = useRef<HTMLVideoElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
-  const MAX_FILE_SIZE = 4 * 1024 * 1024; // 4MB
+  const MAX_FILE_SIZE = 10 * 1024 * 1024; // 4MB
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -26,6 +28,7 @@ export default function Home() {
       }
       setImage(file);
       setPreview(URL.createObjectURL(file));
+      
     }
   };
 
@@ -82,48 +85,27 @@ export default function Home() {
   }
 
   return (
-    <div className="flex flex-col min-h-screen">
+   <>
+    <Sidebar/>
+  
+   <div className="flex flex-col min-h-screen">
       <div className="flex flex-grow">
-        {/* Sidebar */}
-        <aside className="w-64 bg-green-800 text-white p-6 hidden md:block">
-          <nav>
-            <ul>
-              <li className="mb-4"><Link href="/" className="hover:text-green-300">Home</Link></li>
-              <li className="mb-4"><Link href="/about" className="hover:text-green-300">About</Link></li>
-              <li className="mb-4"><Link href="/contact" className="hover:text-green-300">Contact</Link></li>
-              <li className="mb-4"><Link href="/faq" className="hover:text-green-300">FAQ</Link></li>
-            </ul>
-          </nav>
-        </aside>
-
+      
         {/* Main content */}
-        <main className="flex-grow bg-gradient-to-br from-green-100 to-green-300 p-8">
-          <div className="max-w-4xl mx-auto">
+        <main className="flex-grow bg-gradient-to-br from-green-100 to-green-300">
+        {/* <div>
+              <h1>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste aliquam dolores quidem incidunt ea repudiandae reprehenderit amet sapiente voluptate? Recusandae esse quae quaerat vero error perferendis, quis doloribus deleniti libero.
+              </h1>
+            </div> */}
+          <div className="max-w-4xl mx-auto p-8">
             <h1 className="text-5xl font-bold text-center mb-4 text-green-800">Plant Identifier</h1>
             <p className="text-center text-green-700 mb-8">
               Discover the fascinating world of plants! Upload an image or take a photo, and let our AI identify the species for you.
             </p>
 
-            {/* How to use cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-              <div className="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center">
-                <FaUpload className="text-4xl text-green-600 mb-4" />
-                <h3 className="text-xl font-semibold mb-2">Upload Image</h3>
-                <p className="text-center">Choose a clear image of the plant you want to identify.</p>
-              </div>
-              <div className="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center">
-                <FaCamera className="text-4xl text-green-600 mb-4" />
-                <h3 className="text-xl font-semibold mb-2">Take a Photo</h3>
-                <p className="text-center">Use your devices camera to capture a photo of the plant.</p>
-              </div>
-              <div className="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center">
-                <FaLeaf className="text-4xl text-green-600 mb-4" />
-                <h3 className="text-xl font-semibold mb-2">Get Results</h3>
-                <p className="text-center">Our AI will analyze the image and provide plant details.</p>
-              </div>
-            </div>
+          
 
-            <div className="bg-white rounded-lg shadow-lg p-6">
+            <div className="bg-white rounded-xl shadow-lg p-6">
               <div className="mb-6">
                 <label htmlFor="image-upload" className="block text-lg font-medium text-gray-700 mb-2">
                   Upload a plant image
@@ -158,7 +140,7 @@ export default function Home() {
               <canvas ref={canvasRef} style={{ display: 'none' }} width={640} height={480} />
               {preview && (
                 <div className="mb-6 flex justify-center">
-                  <div className="w-96 h-96 relative rounded-lg overflow-hidden shadow-lg">
+                  <div className="w-96 h-96 max-md:w-80 max-md:h-72 relative rounded-xl overflow-hidden shadow-lg">
                     <Image
                       src={preview}
                       alt="Preview"
@@ -220,20 +202,14 @@ export default function Home() {
                 </div>
               )}
             </div>
+            
           </div>
+        <Card />
         </main>
       </div>
 
-      {/* Footer */}
-      <footer className="bg-green-800 text-white p-4">
-        <div className="container mx-auto text-center">
-          <p>&copy; 2024 Plant Identifier. All rights reserved.</p>
-          <div className="mt-2">
-            <Link href="/privacy" className="hover:text-green-300 mr-4">Privacy Policy</Link>
-            <Link href="/terms" className="hover:text-green-300">Terms of Service</Link>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
+   </>
   )
 }
