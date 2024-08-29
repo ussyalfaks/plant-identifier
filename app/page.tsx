@@ -16,6 +16,8 @@ export default function Home() {
   const [showCamera, setShowCamera] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  const [showCard, setShowCard] = useState(true); 
+
 
   const MAX_FILE_SIZE = 10 * 1024 * 1024; // 4MB
 
@@ -28,7 +30,7 @@ export default function Home() {
       }
       setImage(file);
       setPreview(URL.createObjectURL(file));
-      
+      setShowCard(false);
     }
   };
 
@@ -86,13 +88,15 @@ export default function Home() {
 
   return (
    <>
-    <Sidebar/>
   
-   <div className="flex flex-col min-h-screen">
+   <div className="flex flex-col min-h-screen overflow-hidden">
       <div className="flex flex-grow">
+   
+   <Sidebar />
+  
       
         {/* Main content */}
-        <main className="flex-grow bg-gradient-to-br from-green-100 to-green-300">
+        <main className="flex-grow bg-gradient-to-br from-green-100 to-green-300 ">
         {/* <div>
               <h1>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste aliquam dolores quidem incidunt ea repudiandae reprehenderit amet sapiente voluptate? Recusandae esse quae quaerat vero error perferendis, quis doloribus deleniti libero.
               </h1>
@@ -204,7 +208,7 @@ export default function Home() {
             </div>
             
           </div>
-        <Card />
+          {showCard && <Card />}
         </main>
       </div>
 
