@@ -1,21 +1,21 @@
 import Layout from './layout';
 import { useState } from 'react';
 
- function Contact() {
+function Contact() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: ''
   });
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // Here you would typically send the form data to your server
     console.log('Form submitted:', formData);
@@ -29,7 +29,7 @@ import { useState } from 'react';
         <h1 className="text-4xl font-bold text-green-800 mb-6">Contact Us</h1>
         
         <p className="text-lg mb-6">
-          Have questions or feedback? Wed love to hear from you! Fill out the form below, and we'll get back to you as soon as possible.
+        Have questions or feedback? We&apos;d love to hear from you! Fill out the form below, and we&apos;ll get back to you as soon as possible.
         </p>
 
         <form onSubmit={handleSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
@@ -71,7 +71,7 @@ import { useState } from 'react';
               name="message"
               value={formData.message}
               onChange={handleChange}
-              rows="5"
+              rows={5}
               required
             ></textarea>
           </div>
@@ -89,4 +89,4 @@ import { useState } from 'react';
   );
 }
 
-export default Contact
+export default Contact;
