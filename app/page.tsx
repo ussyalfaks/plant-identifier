@@ -108,10 +108,11 @@ export default function Home() {
           
 
             <div className="bg-white rounded-xl shadow-lg p-6">
-              <div className="mb-6">
-                <label htmlFor="image-upload" className="block text-lg font-medium text-gray-700 mb-2">
+            <label htmlFor="image-upload" className="block text-lg font-medium text-gray-700 mb-2">
                   Upload a plant image
                 </label>
+              <div className=" flex  justify-between mb-6">
+                <div>
                 <input
                   type="file"
                   id="image-upload"
@@ -119,14 +120,15 @@ export default function Home() {
                   onChange={handleImageUpload}
                   className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100"
                 />
-              </div>
-              <div className="mb-6">
+                </div>
+                <div>
                 <button
                   onClick={startCamera}
-                  className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition duration-300"
+                  className="w-36 bg-green-600 text-white py-2 px-4 rounded-full hover:bg-green-700 transition duration-300"
                 >
                   Take a Photo
                 </button>
+                </div>
               </div>
               {showCamera && (
                 <div className="mb-6">
