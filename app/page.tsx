@@ -6,6 +6,7 @@ import Image from 'next/image'
 import { identifyPlant } from '../utils/plantIdentifier'
 import Footer from './components/footer'
 import Card from './components/card'
+import Sidebar from './components/Sidebar'
 
 export default function Home() {
   const [image, setImage] = useState<File | null>(null)
@@ -95,6 +96,7 @@ export default function Home() {
       
         {/* Main content */}
         <main className="flex-grow bg-gradient-to-br from-green-100 to-green-300 ">
+<Sidebar/>
         {/* <div>
               <h1>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste aliquam dolores quidem incidunt ea repudiandae reprehenderit amet sapiente voluptate? Recusandae esse quae quaerat vero error perferendis, quis doloribus deleniti libero.
               </h1>
@@ -144,7 +146,7 @@ export default function Home() {
               <canvas ref={canvasRef} style={{ display: 'none' }} width={640} height={480} />
               {preview && (
                 <div className="mb-6 flex justify-center">
-                  <div className="w-96 h-96 max-md:w-80 max-md:h-72 relative rounded-xl overflow-hidden shadow-lg">
+                  <div className=" h-80 w-80 max-md:w-80 max-md:h-72 relative rounded-xl overflow-hidden shadow-lg">
                     <Image
                       src={preview}
                       alt="Preview"

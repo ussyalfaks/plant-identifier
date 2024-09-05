@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
+
+import Logo from '../assets/logo.png';
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,8 +12,8 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="relative min-h-screen">
-      <button
+    <div className=" flex items-center justify-between bg-green-300">
+       {/* <button
         className="md:hidden fixed top-4 left-4 z-10 bg-green-800 text-white p-2 rounded-md"
         onClick={toggleSidebar}
       >
@@ -27,31 +30,41 @@ const Sidebar = () => {
             d="M4 6h16M4 12h16M4 18h16"
           />
         </svg>
-      </button>
-      <div
-        className={`fixed inset-y-0 left-0 transform ${
-          isOpen ? "translate-x-0" : "-translate-x-full"
-        } transition-transform duration-200 ease-in-out bg-gray-800 text-white w-64 z-20 md:relative md:translate-x-0`}
+      </button> */}
+      
+      <div>
+      <Image 
+        src="/images/logo.png" 
+        alt="" 
+        width={100} 
+        height={0} 
+        className=''
+      />
+      </div>
+
+        <nav 
+        // className={`fixed inset-y-0 left-50 transform ${
+        //   isOpen ? "translate-y-0" : "-translate-y-full"
+        // } transition-transform duration-200 ease-in-out w-64 z-20 md:relative md:translate-x-0`}
       >
-        <nav >
-          <ul>
-            <li className="mb-4">
-              <Link href="/" className="hover:text-green-300">
+          <ul className='flex justify-around items-center text-green-600'>
+            <li className="m-5">
+              <Link href="/" className="hover:text-white">
                 Home
               </Link>
             </li>
-            <li className="mb-4">
-              <Link href="/about" className="hover:text-green-300">
+            <li className="m-5">
+              <Link href="/about" className="hover:text-white">
                 About
               </Link>
             </li>
-            <li className="mb-4">
-              <Link href="/contact" className="hover:text-green-300">
+            <li className="m-5">
+              <Link href="/contact" className="hover:text-white">
                 Contact
                 </Link>
               </li>
-            <li className="mb-4">
-              <Link href="/faq" className="hover:text-green-300">
+            <li className="m-5">
+              <Link href="/faq" className="hover:text-white">
                 FAQ
               
               </Link>
@@ -59,7 +72,7 @@ const Sidebar = () => {
           </ul>
         </nav>
       </div>
-    </div>
+    // </div>
   );
 };
 
