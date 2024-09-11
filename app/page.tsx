@@ -6,7 +6,7 @@ import Image from 'next/image'
 import { identifyPlant } from '../utils/plantIdentifier'
 import Footer from './components/footer'
 import Card from './components/card'
-import Sidebar from './components/Sidebar'
+import Navbar from './components/Navbar'
 
 export default function Home() {
   const [image, setImage] = useState<File | null>(null)
@@ -96,20 +96,35 @@ export default function Home() {
       
         {/* Main content */}
         <main className="flex-grow bg-gradient-to-br from-green-100 to-green-300 ">
-<Sidebar/>
-        {/* <div>
-              <h1>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste aliquam dolores quidem incidunt ea repudiandae reprehenderit amet sapiente voluptate? Recusandae esse quae quaerat vero error perferendis, quis doloribus deleniti libero.
-              </h1>
-            </div> */}
-          <div className="max-w-4xl mx-auto p-8">
-            <h1 className="text-5xl font-bold text-center mb-4 text-green-800">Plant Identifier</h1>
+<Navbar/>
+<div className='flex justify-between max-md:flex-col items-center bg-green-400 p-10'>
+    <div>
+      <h1 className="text-5xl font-bold text-green-50 capitalize leading-22 mb-3"> Know your <br /> own favorite <br /> Plant </h1>
+      <p className="text-green-700 text-xl leading-7">
+        Discover the fascinating world of plants! <br /> Upload an image or take a photo, <br /> and let our AI identify the species for you.
+      </p>
+    </div>
+
+    <div>
+      <Image 
+        src="/images/heropic.jpg" 
+        alt="" 
+        width={500} 
+        height={0} 
+        className='rounded-lg max-md:mt-5 max-md:w-96'
+      />
+    </div>
+</div>
+
+          <div className="max-w-4xl mx-auto ">
+            {/* <h1 className="text-5xl font-bold text-center mb-4 text-green-800">Plant Identifier</h1>
             <p className="text-center text-green-700 mb-8">
               Discover the fascinating world of plants! Upload an image or take a photo, and let our AI identify the species for you.
-            </p>
+            </p> */}
 
           
 
-            <div className="bg-white rounded-xl shadow-lg p-6">
+            <div className="bg-white -mt-9 rounded-xl mb-6 shadow-lg p-6">
             <label htmlFor="image-upload" className="block text-lg font-medium text-gray-700 mb-2">
                   Upload a plant image
                 </label>
